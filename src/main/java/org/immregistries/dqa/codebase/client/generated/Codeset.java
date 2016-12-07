@@ -6,7 +6,7 @@
 //
 
 
-package org.openimmunizationsoftware.dqa.codebase.generated;
+package org.immregistries.dqa.codebase.client.generated;
 
 import java.util.ArrayList;
 import java.util.List;

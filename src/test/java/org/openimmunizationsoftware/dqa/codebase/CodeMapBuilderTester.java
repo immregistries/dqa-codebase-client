@@ -7,9 +7,11 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Collection;
 
+import org.immregistries.dqa.codebase.client.CodeMap;
+import org.immregistries.dqa.codebase.client.CodeMapBuilder;
+import org.immregistries.dqa.codebase.client.generated.Code;
+import org.immregistries.dqa.codebase.client.reference.CodesetType;
 import org.junit.Test;
-import org.openimmunizationsoftware.dqa.codebase.generated.Code;
-import org.openimmunizationsoftware.dqa.codebase.reference.CodesetType;
 
 public class CodeMapBuilderTester {
 

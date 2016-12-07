@@ -1,9 +1,9 @@
-package org.openimmunizationsoftware.dqa.codebase.reference;
+package org.immregistries.dqa.codebase.client.reference;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openimmunizationsoftware.dqa.codebase.generated.CodeStatus;
+import org.immregistries.dqa.codebase.client.generated.CodeStatus;
 
 public enum CvxConceptType {
 	  NON_VACCINE("non vaccine")

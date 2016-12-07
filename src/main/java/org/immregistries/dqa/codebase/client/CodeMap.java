@@ -1,4 +1,4 @@
-package org.openimmunizationsoftware.dqa.codebase;
+package org.immregistries.dqa.codebase.client;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,16 +9,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.immregistries.dqa.codebase.client.generated.Code;
+import org.immregistries.dqa.codebase.client.generated.Codebase;
+import org.immregistries.dqa.codebase.client.generated.Codeset;
+import org.immregistries.dqa.codebase.client.generated.LinkTo;
+import org.immregistries.dqa.codebase.client.generated.Reference;
+import org.immregistries.dqa.codebase.client.generated.UseDate;
+import org.immregistries.dqa.codebase.client.reference.CodesetType;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.openimmunizationsoftware.dqa.codebase.generated.Code;
-import org.openimmunizationsoftware.dqa.codebase.generated.Codebase;
-import org.openimmunizationsoftware.dqa.codebase.generated.Codeset;
-import org.openimmunizationsoftware.dqa.codebase.generated.LinkTo;
-import org.openimmunizationsoftware.dqa.codebase.generated.Reference;
-import org.openimmunizationsoftware.dqa.codebase.generated.UseDate;
-import org.openimmunizationsoftware.dqa.codebase.reference.CodesetType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

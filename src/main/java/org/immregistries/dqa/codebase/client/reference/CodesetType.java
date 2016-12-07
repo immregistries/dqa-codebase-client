@@ -1,4 +1,4 @@
-package	org.openimmunizationsoftware.dqa.codebase.reference;
+package	org.immregistries.dqa.codebase.client.reference;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.openimmunizationsoftware.dqa.codebase;
+package org.immregistries.dqa.codebase.client;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -7,7 +7,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.openimmunizationsoftware.dqa.codebase.generated.Codebase;
+import org.immregistries.dqa.codebase.client.generated.Codebase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

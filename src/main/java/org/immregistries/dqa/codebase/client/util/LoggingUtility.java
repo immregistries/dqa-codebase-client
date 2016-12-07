@@ -1,4 +1,4 @@
-package org.openimmunizationsoftware.dqa.codebase;
+package org.immregistries.dqa.codebase.client.util;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;

@@ -2,8 +2,8 @@ package org.openimmunizationsoftware.dqa.codebase;
 
 import static org.junit.Assert.*;
 
+import org.immregistries.dqa.codebase.client.reference.CodesetType;
 import org.junit.Test;
-import org.openimmunizationsoftware.dqa.codebase.reference.CodesetType;
 
 public class CodesetTypeTester {
 

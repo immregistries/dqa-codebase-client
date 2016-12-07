@@ -1,4 +1,4 @@
-package org.openimmunizationsoftware.dqa.codebase.util;
+package org.immregistries.dqa.codebase.client.util;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;

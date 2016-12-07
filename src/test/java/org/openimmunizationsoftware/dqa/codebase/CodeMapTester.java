@@ -10,10 +10,13 @@ import javax.xml.bind.JAXBException;
 
 import junit.framework.TestCase;
 
+import org.immregistries.dqa.codebase.client.CodeMap;
+import org.immregistries.dqa.codebase.client.CodeMapBuilder;
+import org.immregistries.dqa.codebase.client.generated.Code;
+import org.immregistries.dqa.codebase.client.generated.Codeset;
+import org.immregistries.dqa.codebase.client.reference.CodesetType;
+import org.immregistries.dqa.codebase.client.util.LoggingUtility;
 import org.junit.Test;
-import org.openimmunizationsoftware.dqa.codebase.generated.Code;
-import org.openimmunizationsoftware.dqa.codebase.generated.Codeset;
-import org.openimmunizationsoftware.dqa.codebase.reference.CodesetType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

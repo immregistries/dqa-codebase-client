@@ -6,7 +6,7 @@
 //
 
 
-package org.openimmunizationsoftware.dqa.codebase.generated;
+package org.immregistries.dqa.codebase.client.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
