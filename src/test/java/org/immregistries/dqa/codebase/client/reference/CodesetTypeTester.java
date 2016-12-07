@@ -1,4 +1,4 @@
-package org.openimmunizationsoftware.dqa.codebase;
+package org.immregistries.dqa.codebase.client.reference;
 
 import static org.junit.Assert.*;
 
