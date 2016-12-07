@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<codebase>
+<codeset>
+    <label>Vaccine Product</label>
+    <type>VACCINE_PRODUCT</type>
+    <code>
+        <value>TEST-PRODUCT-1</value>
+        <label>TEST</label>
+        <description></description>
+        <code-status>
+            <status>Valid</status>
+        </code-status>
+        <reference>
+            <link-to codeset="VACCINATION_CVX_CODE">000</link-to>
+            <link-to codeset="VACCINATION_MANUFACTURER_CODE">ZZZ</link-to>
+        </reference>
+        <use-date>
+            <not-before>19700101</not-before>
+            <not-expected-before>19700101</not-expected-before>
+        </use-date>
+    </code>
+    <code>
+        <value>TEST-PRODUCT-2</value>
+        <label>TEST</label>
+        <description></description>
+        <code-status>
+            <status>Valid</status>
+        </code-status>
+        <reference>
+            <link-to codeset="VACCINATION_CVX_CODE">000</link-to>
+            <link-to codeset="VACCINATION_MANUFACTURER_CODE">ZZZ</link-to>
+        </reference>
+        <use-date>
+            <not-before>19910101</not-before>
+            <not-expected-before>19910101</not-expected-before>
+            <not-expected-after>19980101</not-expected-after>
+            <not-after>19980101</not-after>
+        </use-date>
+    </code>
+    <code>
+        <value>TEST-PRODUCT-3</value>
+        <label>TEST</label>
+        <description></description>
+        <code-status>
+            <status>Valid</status>
+        </code-status>
+        <reference>
+            <link-to codeset="VACCINATION_CVX_CODE">000</link-to>
+            <link-to codeset="VACCINATION_MANUFACTURER_CODE">ZZZ</link-to>
+        </reference>
+        <use-date>
+            <not-before>20010101</not-before>
+            <not-expected-before>20010101</not-expected-before>
+            <not-expected-after>20020101</not-expected-after>
+            <not-after>20020101</not-after>
+        </use-date>
+    </code>
+    <code>
+        <value>TEST-PRODUCT-4</value>
+        <label>TEST</label>
+        <description></description>
+        <code-status>
+            <status>Valid</status>
+        </code-status>
+        <reference>
+            <link-to codeset="VACCINATION_CVX_CODE">000</link-to>
+            <link-to codeset="VACCINATION_MANUFACTURER_CODE">ZZZ</link-to>
+        </reference>
+        <use-date>
+            <not-before>20160101</not-before>
+            <not-expected-before>20160101</not-expected-before>
+        </use-date>
+    </code>
+</codeset>
+</codebase>

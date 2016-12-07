@@ -1,7 +1,9 @@
-package org.openimmunizationsoftware.dqa.codebase.values;
+package org.openimmunizationsoftware.dqa.codebase.reference;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.openimmunizationsoftware.dqa.codebase.generated.CodeStatus;
 
 
 public enum CodeStatusValue {
@@ -22,7 +24,11 @@ public enum CodeStatusValue {
 		this.value = valueIn;
 	}
 	
-	public static CodeStatusValue getByValue(String value) {
+	public static CodeStatusValue getBy(String value) {
 		return descMap.get(value);
+	}
+	
+	public static CodeStatusValue getBy(CodeStatus cs) {
+		return descMap.get(cs.getStatus());
 	}
 }

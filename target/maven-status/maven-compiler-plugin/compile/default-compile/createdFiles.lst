@@ -1,0 +1,14 @@
+org/openimmunizationsoftware/dqa/codebase/generated/LinkTo.class
+org/openimmunizationsoftware/dqa/codebase/generated/Code.class
+org/openimmunizationsoftware/dqa/codebase/CodeMapBuilder.class
+org/openimmunizationsoftware/dqa/codebase/generated/Codeset.class
+org/openimmunizationsoftware/dqa/codebase/generated/Codebase.class
+org/openimmunizationsoftware/dqa/codebase/generated/Deprecated.class
+org/openimmunizationsoftware/dqa/codebase/CodeTableType.class
+org/openimmunizationsoftware/dqa/codebase/generated/UseAge.class
+org/openimmunizationsoftware/dqa/codebase/generated/Reference.class
+org/openimmunizationsoftware/dqa/codebase/CodeMap.class
+org/openimmunizationsoftware/dqa/codebase/generated/ObjectFactory.class
+org/openimmunizationsoftware/dqa/codebase/generated/UseDate.class
+org/openimmunizationsoftware/dqa/codebase/generated/CodeStatus.class
+org/openimmunizationsoftware/dqa/codebase/LoggingUtility.class

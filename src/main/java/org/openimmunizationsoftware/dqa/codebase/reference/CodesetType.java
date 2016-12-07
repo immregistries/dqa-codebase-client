@@ -1,4 +1,4 @@
-package	org.openimmunizationsoftware.dqa.codebase;
+package	org.openimmunizationsoftware.dqa.codebase.reference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +60,8 @@ public enum CodesetType {
 	VACCINATION_VIS_VACCINES("VACCINATION_VIS_VACCINES","Vaccination VIS Vaccines"),
 	VACCINE_GROUP("VACCINE_GROUP","Vaccine Group"),
 	VACCINE_PRODUCT("VACCINE_PRODUCT","Vaccine Product"),
-	VACCINE_TYPE("VACCINE_TYPE","Vaccine Type"),
+	VACCINE_TYPE("VACCINE_TYPE","Vaccine Type"), 
+	VACCINATION_NDC_CODE("VACCINATION_NDC_CODE","Vaccination NDC Code"),
  
 	;
 

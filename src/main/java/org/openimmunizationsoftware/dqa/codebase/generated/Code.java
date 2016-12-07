@@ -120,7 +120,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Code {
 
-    @XmlElement(required = true)
+	@XmlElement(required = true)
     protected String value;
     @XmlElement(required = true)
     protected String label;

@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 import org.openimmunizationsoftware.dqa.codebase.generated.Code;
+import org.openimmunizationsoftware.dqa.codebase.reference.CodesetType;
 
 public class CodeMapBuilderTester {
 
