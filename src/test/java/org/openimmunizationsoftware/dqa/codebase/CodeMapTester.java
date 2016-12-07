@@ -56,12 +56,23 @@ public class CodeMapTester {
 		CodeMap cm = builder.getCodeMap(is);
 		logger.info(logutil.stringify(cm));
 		
-		Code iv = cm.getCodeForCodeset(CodesetType.BODY_ROUTE, "IV");
+		{
+	  	Code iv = cm.getCodeForCodeset(CodesetType.BODY_ROUTE, "IV");
+ 		
+		  logger.info(logutil.stringify(iv));
 		
-		logger.info(logutil.stringify(iv));
+		  assertNotNull(iv);
+		  assertEquals(iv.getValue(),  "IV");
+		}
 		
-		assertNotNull(iv);
-		assertEquals(iv.getValue(),  "IV");
+		{
+		  Code mmr = cm.getCodeForCodeset(CodesetType.VACCINATION_CVX_CODE, "03");
+	    logger.info(logutil.stringify(mmr));
+	    
+	    assertNotNull(mmr);
+	    assertEquals(mmr.getLabel(),  "MMR");
+		}
+		
 	}
 	
 	@Test
