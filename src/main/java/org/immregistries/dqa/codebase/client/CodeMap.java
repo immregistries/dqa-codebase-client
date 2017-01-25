@@ -134,20 +134,20 @@ public class CodeMap {
 	
 	public void remap(Codebase mapthis) {
 		this.base = mapthis;
-		logger.info("mapping!");
+		logger.info("CodeBase Mapping!");
 		this.codeBaseMap = new HashMap<CodesetType, Map<String, Code>>();
 		for (Codeset s : mapthis.getCodeset()) {
-			logger.info("Mapping " + s.getLabel());
+//			logger.info("Mapping " + s.getLabel());
 			Map<String, Code> codeMap = new HashMap<String, Code>();
 			
 			for (Code c : s.getCode()) {
 				codeMap.put(c.getValue(), c);
 			}
 			
-			logger.info("        type: " + s.getType());
+//			logger.info("        type: " + s.getType());
 			CodesetType t = CodesetType.getByTypeCode(s.getType());
 			
-			logger.info("Codeset: " + t);
+//			logger.info("Codeset: " + t);
 			this.codeBaseMap.put(t, codeMap);
 			
 			if (CodesetType.VACCINE_PRODUCT == t) {
@@ -257,22 +257,23 @@ public class CodeMap {
 	 */
 	public  Map<CodesetType, List<Code>> getRelatedCodes(Code c) {
 		Map<CodesetType, List<Code>> relatedCodes = new HashMap<CodesetType, List<Code>>();
-		List<LinkTo> links = c.getReference().getLinkTo();
-		
-		for (LinkTo link : links) {
-			if (link != null) {
-				String codesetType = link.getCodeset();
-				CodesetType type = CodesetType.getByTypeCode(codesetType);
-				List<Code> codeList = relatedCodes.get(type);
-				if (codeList == null) {
-					codeList = new ArrayList<Code>();
-					relatedCodes.put(type,  codeList);
+		if (c != null && c.getReference() != null) {
+			List<LinkTo> links = c.getReference().getLinkTo();
+			
+			for (LinkTo link : links) {
+				if (link != null) {
+					String codesetType = link.getCodeset();
+					CodesetType type = CodesetType.getByTypeCode(codesetType);
+					List<Code> codeList = relatedCodes.get(type);
+					if (codeList == null) {
+						codeList = new ArrayList<Code>();
+						relatedCodes.put(type,  codeList);
+					}
+					Code relatedCode = this.getCodeForCodeset(type, link.getValue());
+					codeList.add(relatedCode);
 				}
-				Code relatedCode = this.getCodeForCodeset(type, link.getValue());
-				codeList.add(relatedCode);
 			}
 		}
-		
 		return relatedCodes;
 	}
 	

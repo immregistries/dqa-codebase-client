@@ -1,17 +1,11 @@
 package org.immregistries.dqa.codebase.client;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import java.io.IOException;
 import java.io.InputStream;
 
-import javax.xml.bind.JAXBException;
-
-import junit.framework.TestCase;
-
-import org.immregistries.dqa.codebase.client.CodeMap;
-import org.immregistries.dqa.codebase.client.CodeMapBuilder;
 import org.immregistries.dqa.codebase.client.generated.Code;
 import org.immregistries.dqa.codebase.client.generated.Codeset;
 import org.immregistries.dqa.codebase.client.reference.CodesetType;
