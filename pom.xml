@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.immregistries</groupId>
 	<artifactId>dqa-codebase-client</artifactId>
-	<version>0.0.1-DEVELOPMENT</version>
+	<version>2.0.1-DEVELOPMENT</version>
 	<packaging>jar</packaging>
 
 	<name>Client Jar for using the DQA Codebase</name>
