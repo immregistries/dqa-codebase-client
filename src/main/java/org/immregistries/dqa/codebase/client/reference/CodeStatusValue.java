@@ -8,9 +8,9 @@ import org.immregistries.dqa.codebase.client.generated.CodeStatus;
 
 public enum CodeStatusValue {
 
-	INVALID("INVALID"), UNRECOGNIZED("UNRECOGNIZED"), DEPRECATED("DEPRECATED"), IGNORED("IGNORED");
+	INVALID("INVALID"), UNRECOGNIZED("UNRECOGNIZED"), DEPRECATED("DEPRECATED"), IGNORED("IGNORED"), VALID("Valid");
 	
-		private static final Map<String, CodeStatusValue> descMap = new HashMap<String, CodeStatusValue>();
+	private static final Map<String, CodeStatusValue> descMap = new HashMap<String, CodeStatusValue>();
 	
 	static {
 		for (CodeStatusValue t : CodeStatusValue.values()) {
@@ -25,7 +25,12 @@ public enum CodeStatusValue {
 	}
 	
 	public static CodeStatusValue getBy(String value) {
-		return descMap.get(value);
+		CodeStatusValue val = descMap.get(value);
+		if (val == null) {
+			return CodeStatusValue.UNRECOGNIZED;
+		}
+		
+		return val;
 	}
 	
 	public static CodeStatusValue getBy(CodeStatus cs) {
