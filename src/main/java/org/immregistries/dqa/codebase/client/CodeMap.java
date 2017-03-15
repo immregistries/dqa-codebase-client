@@ -43,6 +43,30 @@ public class CodeMap {
 		return productCodes;
 	}
 	
+	public String getRelatedValue(Code codeIn, CodesetType desiredType) {
+		String cvx = "";
+		if (codeIn == null) {
+			return cvx;
+		}
+		if (desiredType == null) {
+			return cvx;
+		}
+		Reference r = codeIn.getReference();
+		if (r == null) {
+			return cvx;
+		}
+		
+		List<LinkTo> linkList = r.getLinkTo();
+		for (LinkTo link : linkList) {
+			if (desiredType.equals(CodesetType.getByTypeCode(link.getCodeset()))) {
+				cvx = link.getValue();
+				break;
+			}
+		}
+		
+		return cvx;
+	}
+	
 	public Code getProductFor(String vaccineCvx, String vaccineMvx, String adminDate) {
 		List<Code> productCodes = getProductsFor(vaccineCvx, vaccineMvx);
 		
@@ -137,11 +161,12 @@ public class CodeMap {
 		logger.info("CodeBase Mapping!");
 		this.codeBaseMap = new HashMap<CodesetType, Map<String, Code>>();
 		for (Codeset s : mapthis.getCodeset()) {
+			logger.info("Mapping codeset: " + s.getType());
 //			logger.info("Mapping " + s.getLabel());
 			Map<String, Code> codeMap = new HashMap<String, Code>();
-			
 			for (Code c : s.getCode()) {
 				codeMap.put(c.getValue(), c);
+				logger.info("putting value : " + c.getValue() + " code code: "  + c);
 			}
 			
 //			logger.info("        type: " + s.getType());

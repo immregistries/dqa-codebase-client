@@ -61,8 +61,8 @@ public enum CodesetType {
 	VACCINE_GROUP("VACCINE_GROUP","Vaccine Group"),
 	VACCINE_PRODUCT("VACCINE_PRODUCT","Vaccine Product"),
 	VACCINE_TYPE("VACCINE_TYPE","Vaccine Type"), 
-	VACCINATION_NDC_CODE("VACCINATION_NDC_CODE","Vaccination NDC Code"),
- 
+	VACCINATION_NDC_CODE_UNIT_OF_SALE("VACCINATION_NDC_CODE_UNIT_OF_SALE","Vaccination NDC Code Unit of Sale"), 
+	VACCINATION_NDC_CODE_UNIT_OF_USE("VACCINATION_NDC_CODE_UNIT_OF_USE","Vaccination NDC Code Unit of Use"), 
 	;
 
 	private String description;

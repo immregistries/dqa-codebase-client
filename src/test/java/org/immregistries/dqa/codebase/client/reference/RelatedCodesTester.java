@@ -1,0 +1,54 @@
+package org.immregistries.dqa.codebase.client.reference;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+import java.util.Map;
+
+import org.immregistries.dqa.codebase.client.CodeMap;
+import org.immregistries.dqa.codebase.client.CodeMapBuilder;
+import org.immregistries.dqa.codebase.client.generated.Code;
+import org.immregistries.dqa.codebase.client.generated.LinkTo;
+import org.junit.Test;
+
+public class RelatedCodesTester {
+
+	private CodeMap codeMapper = CodeMapBuilder.INSTANCE.getCodeMapFromClasspathResource("/Compiled.ndc-only.xml");
+	@Test
+	public void testGettingRelatedCodes() {
+		String ndcCode ="00006-4047-20";
+		Code code = codeMapper.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE,  ndcCode);
+		assertNotNull("You should find the NDC Code!!!", code);
+		
+		Map<CodesetType, List<Code>> relatedCodes = codeMapper.getRelatedCodes(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE,  ndcCode);
+		
+		assertNotNull(relatedCodes);
+		assertEquals("should have... three", 3, relatedCodes.size());
+		
+
+		List<LinkTo> linkList = code.getReference().getLinkTo();
+		String cvx = "";
+		for (LinkTo link : linkList) {
+			if (CodesetType.VACCINATION_CVX_CODE.equals(CodesetType.getByTypeCode(link.getCodeset()))) {
+				cvx = link.getValue();
+				break;
+			}
+		}
+		assertEquals("Should have a CVX Represented", "116", cvx);
+		
+	}
+	
+	@Test
+	public void relatedValueTest() {
+		String ndcCode ="00006-4047-20";
+		Code code = codeMapper.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE,  ndcCode);
+		assertNotNull("You should find the NDC Code!!!", code);
+		
+		String cvx = codeMapper.getRelatedValue(code, CodesetType.VACCINATION_CVX_CODE);
+		assertNotNull("CVX Should have a value", cvx);
+		
+		assertEquals("should be 116", "116", cvx);
+	}
+	
+}

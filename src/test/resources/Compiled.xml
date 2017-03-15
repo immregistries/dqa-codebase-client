@@ -14209,7 +14209,8 @@
         </code>
     </codeset>
     <codeset>
-        <label>VACCINATION_NDC_CODE_UNIT_OF_SALE</label>
+    	<type>VACCINATION_NDC_CODE_UNIT_OF_SALE</type>
+        <label>Vaccination Unit Of Sale</label>
         <code>
             <value>00006-4963-41</value>
             <label>Zostavax</label>
@@ -17832,7 +17833,8 @@
         </code>
     </codeset>
     <codeset>
-        <label>VACCINATION_NDC_CODE_UNIT_OF_USE</label>
+    	<type>VACCINATION_NDC_CODE_UNIT_OF_USE</type>
+        <label>Vaccination NDC Code Unit Of Use</label>
         <code>
             <value>49281-0589-58</value>
             <label>Menactra</label>
