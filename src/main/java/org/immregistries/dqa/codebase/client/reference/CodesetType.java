@@ -66,7 +66,7 @@ public enum CodesetType {
 	;
 
 	private String description;
-	private String type;
+	private String typeName;
 
 	private static final Map<String, CodesetType> descMap = new HashMap<String, CodesetType>();
 	private static final Map<String, CodesetType> typeMap = new HashMap<String, CodesetType>();
@@ -76,17 +76,21 @@ public enum CodesetType {
 			descMap.put(t.description, t);
 		}
 		for (CodesetType t : CodesetType.values()) {
-			typeMap.put(t.type, t);
+			typeMap.put(t.typeName, t);
 		}
 	}
 	
 	private	CodesetType(String typeName, String desc) {
 		this.description = desc;
-		this.type = typeName;
+		this.typeName = typeName;
 	}
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public String getType() {
+		return typeName;
 	}
 
 	public static CodesetType getByDesc(String desc) {
