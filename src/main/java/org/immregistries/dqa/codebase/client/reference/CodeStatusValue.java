@@ -14,7 +14,7 @@ public enum CodeStatusValue {
 	
 	static {
 		for (CodeStatusValue t : CodeStatusValue.values()) {
-			descMap.put(t.value, t);
+			descMap.put(t.value.toUpperCase(), t);
 		}
 	}
 	
@@ -25,7 +25,12 @@ public enum CodeStatusValue {
 	}
 	
 	public static CodeStatusValue getBy(String value) {
-		CodeStatusValue val = descMap.get(value);
+		if (value == null) {
+			return CodeStatusValue.UNRECOGNIZED;
+		}
+		
+		CodeStatusValue val = descMap.get(value.toUpperCase());
+		
 		if (val == null) {
 			return CodeStatusValue.UNRECOGNIZED;
 		}
@@ -34,6 +39,8 @@ public enum CodeStatusValue {
 	}
 	
 	public static CodeStatusValue getBy(CodeStatus cs) {
-		return descMap.get(cs.getStatus());
+		return getBy(cs.getStatus());
 	}
+	
+	
 }

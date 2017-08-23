@@ -15,6 +15,8 @@ import org.immregistries.dqa.codebase.client.generated.Codeset;
 import org.immregistries.dqa.codebase.client.generated.LinkTo;
 import org.immregistries.dqa.codebase.client.generated.Reference;
 import org.immregistries.dqa.codebase.client.generated.UseDate;
+import org.immregistries.dqa.codebase.client.reference.Ops;
+import org.immregistries.dqa.codebase.client.reference.CodeStatusValue;
 import org.immregistries.dqa.codebase.client.reference.CodesetType;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -44,27 +46,27 @@ public class CodeMap {
 	}
 	
 	public String getRelatedValue(Code codeIn, CodesetType desiredType) {
-		String cvx = "";
+		String relatedValue = "";
 		if (codeIn == null) {
-			return cvx;
+			return relatedValue;
 		}
 		if (desiredType == null) {
-			return cvx;
+			return relatedValue;
 		}
 		Reference r = codeIn.getReference();
 		if (r == null) {
-			return cvx;
+			return relatedValue;
 		}
 		
 		List<LinkTo> linkList = r.getLinkTo();
 		for (LinkTo link : linkList) {
 			if (desiredType.equals(CodesetType.getByTypeCode(link.getCodeset()))) {
-				cvx = link.getValue();
+				relatedValue = link.getValue();
 				break;
 			}
 		}
 		
-		return cvx;
+		return relatedValue;
 	}
 	
 	public Code getProductFor(String vaccineCvx, String vaccineMvx, String adminDate) {
@@ -76,12 +78,17 @@ public class CodeMap {
 			return null;
 		}
 		
-		//at this point we know we have more than one product in our list.  time to get the hands dirty.
-		logger.debug("There is more than one product for cvx[" + vaccineCvx + "] + mvx[" + vaccineMvx + "]");
+		//at this point we know we have more than one product in our list.  
+		// time to evaluate the dates to see which one is active. 
+		if (logger.isTraceEnabled()) {
+			logger.trace("There is more than one product for cvx[" + vaccineCvx + "] + mvx[" + vaccineMvx + "] checking dates");
+		}
+		
 		//We need to pick the most likely one.  
-
 		if (adminDate != null) {
-			logger.debug("Searching for product that is valid for admin date[" + adminDate + "]");
+			if (logger.isTraceEnabled()) {
+				logger.trace("Searching for product that is valid for admin date[" + adminDate + "]");
+			}
 			
 			DateTime adminDT = parseDateTime(adminDate);
 			
@@ -94,12 +101,13 @@ public class CodeMap {
 				
 				//Parse the dates...
 				DateTime bDT = parseDateTime(beginning);
-
-				logger.debug("Must be after getNotBefore["+beginning+"] ");
-				
+				if (logger.isTraceEnabled()) {
+					logger.trace("Must be after getNotBefore["+beginning+"] ");
+				}
 				boolean isAfterBeginning = !isBeforeThis(adminDT, bDT);
-				
-				logger.debug("isAfterBeginning ? " + isAfterBeginning);
+				if (logger.isTraceEnabled()) {
+					logger.trace("isAfterBeginning ? " + isAfterBeginning);
+				}
 
 				//We only care about the beginning date. 
 				//This is very intentional, and it allows us to be flexible and return products where 
@@ -158,21 +166,27 @@ public class CodeMap {
 	
 	public void remap(Codebase mapthis) {
 		this.base = mapthis;
-		logger.info("CodeBase Mapping!");
+		
+		if (logger.isTraceEnabled()) {
+			logger.trace("CodeBase Mapping!");
+		}
+		
 		this.codeBaseMap = new HashMap<CodesetType, Map<String, Code>>();
 		for (Codeset s : mapthis.getCodeset()) {
-			logger.info("Mapping codeset: " + s.getType());
-//			logger.info("Mapping " + s.getLabel());
+			if (logger.isInfoEnabled()) {
+				logger.info("Mapping codeset: " + s.getType());
+			}
+			
 			Map<String, Code> codeMap = new HashMap<String, Code>();
 			for (Code c : s.getCode()) {
 				codeMap.put(c.getValue(), c);
-				logger.info("putting value : " + c.getValue() + " code code: "  + c);
+				if (logger.isTraceEnabled()) {
+					logger.trace("     " + s.getType() + " value[" + c.getValue() + "]  for code["  + c.getLabel() + "]");
+				}
 			}
 			
-//			logger.info("        type: " + s.getType());
 			CodesetType t = CodesetType.getByTypeCode(s.getType());
 			
-//			logger.info("Codeset: " + t);
 			this.codeBaseMap.put(t, codeMap);
 			
 			if (CodesetType.VACCINE_PRODUCT == t) {
@@ -207,7 +221,9 @@ public class CodeMap {
 							products.add(productCode);
 							
 							if (products.size() > 1) {
-								logger.debug("SORTING PRODUCT: " + productCode.getValue());
+								if (logger.isTraceEnabled()) {
+									logger.trace("SORTING PRODUCT: " + productCode.getValue());
+								}
 								Collections.sort(products, new CustomCodeDateComparator());
 							}
 						}
@@ -247,14 +263,36 @@ public class CodeMap {
     		return 0;
 	    }
 	}
-	
+
 	public Code getCodeForCodeset(CodesetType c, String value) {
+		return this.getCodeForCodeset(c, value, Ops.Mapping.MAP);
+	}
+	
+	public Code getCodeForCodeset(CodesetType c, String value, Ops.Mapping mappingOption) {
 		Code code = null;
+		
 //		1. Get the codeset
 		Map<String, Code> codeSetMap = codeBaseMap.get(c);
+		
 		if (codeSetMap != null) {
-//		2. get the code
+			
+//			2. get the code
 			code = codeSetMap.get(value);
+			if (logger.isDebugEnabled()) {
+				logger.debug("found code: " + code.getLabel() + " status: " + code.getCodeStatus().getStatus());
+			}
+			
+//			3. Check if it's mapped to something else by deprecation.
+			if (code != null && mappingOption == Ops.Mapping.MAP) {
+				CodeStatusValue status = CodeStatusValue.getBy(code.getCodeStatus());
+				if (status == CodeStatusValue.DEPRECATED) {
+					String newValue = code.getCodeStatus().getDeprecated().getNewCodeValue();
+					if (logger.isDebugEnabled()) {
+						logger.debug("Mapping to: " + newValue);
+					}
+					code = codeSetMap.get(newValue);
+				}
+			}
 		}
 		
 		return code;

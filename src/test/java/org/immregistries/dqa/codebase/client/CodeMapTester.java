@@ -3,6 +3,7 @@ package org.immregistries.dqa.codebase.client;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.io.InputStream;
 
@@ -16,20 +17,51 @@ import org.slf4j.LoggerFactory;
 
 public class CodeMapTester {
 	LoggingUtility logutil = new LoggingUtility();
-	
-	private static final Logger logger = LoggerFactory
-			.getLogger(CodeMapTester.class);
+	private static final Logger logger = LoggerFactory.getLogger(CodeMapTester.class);
 	
 	private CodeMapBuilder builder = CodeMapBuilder.INSTANCE;
 	
+	private InputStream is = Codeset.class.getResourceAsStream("/Compiled.xml");
+	private CodeMap cm = builder.getCodeMap(is);
+	
+	@Test
+	public void ndcCodeTest() {
+		String ndcString = "";
+		ndcString = "49281-0400-05";
+		Code c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+		assertNotNull(c);
+		assertEquals(ndcString + " should be a code ", ndcString , c.getValue());
+
+		ndcString = "asfasfjask;fj2f3";
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+		assertNull(c);
+		
+		ndcString = "";
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+		assertNull(c);
+		
+		ndcString = null;
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+		assertNull(c);
+	}
+	
+	@Test
+	public void ndcCodeTestMapping() {
+		String ndcString = "";
+		ndcString = "49281-400-05";
+		Code c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+		assertNotNull(c);
+		assertEquals(ndcString + " should be a mapped code.  not the same", "49281-0400-05" , c.getValue());
+		
+		ndcString = "49281-400-10";
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+		assertNotNull(c);
+		assertEquals(ndcString + " should be a mapped code.  not the same", "49281-0400-10" , c.getValue());
+		
+	}
+	
 	@Test
 	public void prodCodeTest() {
-		InputStream is = Codeset.class.getResourceAsStream("/Compiled.xml");
-		CodeMap cm = builder.getCodeMap(is);
-		
-//		String exampleXML = "";
-//		InputStream stream = new ByteArrayInputStream(exampleXML.getBytes("UTF-8"));
-		
 		Code product = cm.getProductFor("113","PMC", "20160101");
 		assertNotNull("Should have found a DECAVAC product for 20160101", product);
 		assertEquals("Should be DECAVAC for 20160101", "DECAVAC", product.getValue());
