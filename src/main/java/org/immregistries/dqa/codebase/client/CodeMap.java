@@ -26,7 +26,6 @@ import org.slf4j.LoggerFactory;
 
 public class CodeMap {
 
-	
 	private static final Logger logger = LoggerFactory.getLogger(CodeMap.class);
 	
 	private Map<CodesetType, Map<String, Code>> codeBaseMap;
@@ -173,6 +172,10 @@ public class CodeMap {
 		
 		this.codeBaseMap = new HashMap<CodesetType, Map<String, Code>>();
 		for (Codeset s : mapthis.getCodeset()) {
+		  //Get the type for this set:
+      CodesetType typeCode = CodesetType.getByTypeCode(s.getType());
+
+		  //Map the codeset:
 			if (logger.isInfoEnabled()) {
 				logger.info("Mapping codeset: " + s.getType());
 			}
@@ -185,11 +188,21 @@ public class CodeMap {
 				}
 			}
 			
-			CodesetType t = CodesetType.getByTypeCode(s.getType());
-			
-			this.codeBaseMap.put(t, codeMap);
-			
-			if (CodesetType.VACCINE_PRODUCT == t) {
+			this.codeBaseMap.put(typeCode, codeMap);
+
+			//Special Handling for NDC Codes.  Add it to an additional CodesetType.
+      if (typeCode == CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE || typeCode == CodesetType.VACCINATION_NDC_CODE_UNIT_OF_USE) {
+          Map<String, Code> ndcCodeMap = this.codeBaseMap.get(CodesetType.VACCINATION_NDC_CODE);
+          //The first NDC set will need to build a map.
+          if (ndcCodeMap == null) {
+              ndcCodeMap = new HashMap<>();
+              this.codeBaseMap.put(CodesetType.VACCINATION_NDC_CODE, ndcCodeMap);
+          }
+          ndcCodeMap.putAll(codeMap);
+      }
+
+			//Special Handling for Vaccine Product
+			if (typeCode == CodesetType.VACCINE_PRODUCT) {
 				for (Code productCode : s.getCode()) {
 					Reference ref = productCode.getReference();
 					if (ref != null) {
@@ -279,7 +292,10 @@ public class CodeMap {
 //			2. get the code
 			code = codeSetMap.get(value);
 			if (logger.isDebugEnabled()) {
-				logger.debug("found code: " + code.getLabel() + " status: " + code.getCodeStatus().getStatus());
+				logger.debug("found code: " + code);
+				if (code != null) {
+					logger.debug(code.getLabel() + code.getCodeStatus() != null ? " status: " + code.getCodeStatus().getStatus() : " status: null");
+				}
 			}
 			
 //			3. Check if it's mapped to something else by deprecation.
@@ -297,7 +313,15 @@ public class CodeMap {
 		
 		return code;
 	}
-	
+
+	public Code getFirstRelatedCodeForCodeIn(CodesetType codeTypeIn, String codeIn, CodesetType codeTypeDesired) {
+		List<Code> relatedCodes = this.getRelatedCodesForCodeIn(codeTypeIn, codeIn, codeTypeDesired);
+		if (relatedCodes != null && relatedCodes.size() > 0) {
+			return relatedCodes.get(0);
+		}
+		return null;
+	}
+
 	/**
 	 * This is a shorcut method.  It gives access to the related codes
 	 * without first getting a Code object. 
@@ -309,6 +333,11 @@ public class CodeMap {
 		Code code = this.getCodeForCodeset(ct,  value);
 		Map<CodesetType, List<Code>> links = getRelatedCodes(code);
 		return links;
+	}
+
+	public List<Code> getRelatedCodesForCodeIn(CodesetType codeTypeIn, String codeIn, CodesetType codeTypeDesired) {
+		Map<CodesetType, List<Code>> relatedCodes = this.getRelatedCodes(codeTypeIn,  codeIn);
+		return relatedCodes.get(codeTypeDesired);
 	}
 	
 	/**

@@ -30,7 +30,11 @@ public class CodeMapTester {
 		ndcString = "49281-0400-05";
 		Code c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
 		assertNotNull(c);
-		assertEquals(ndcString + " should be a code ", ndcString , c.getValue());
+		assertEquals(ndcString + " should find in unit of sale bucket ", ndcString , c.getValue());
+
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE, ndcString);
+		assertNotNull(c);
+		assertEquals(ndcString + " should find in the generic NDC bucket ", ndcString , c.getValue());
 
 		ndcString = "asfasfjask;fj2f3";
 		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
@@ -48,15 +52,24 @@ public class CodeMapTester {
 	@Test
 	public void ndcCodeTestMapping() {
 		String ndcString = "";
+
 		ndcString = "49281-400-05";
 		Code c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
 		assertNotNull(c);
 		assertEquals(ndcString + " should be a mapped code.  not the same", "49281-0400-05" , c.getValue());
+
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE, ndcString);
+		assertNotNull(c);
+		assertEquals(ndcString + " should find in the generic NDC bucket ", "49281-0400-05" , c.getValue());
 		
 		ndcString = "49281-400-10";
 		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
 		assertNotNull(c);
 		assertEquals(ndcString + " should be a mapped code.  not the same", "49281-0400-10" , c.getValue());
+
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE, ndcString);
+		assertNotNull(c);
+		assertEquals(ndcString + " should find in the generic NDC bucket ", "49281-0400-10" , c.getValue());
 		
 	}
 	

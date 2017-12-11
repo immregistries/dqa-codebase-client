@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 public enum CodeMapBuilder {
 	INSTANCE;
 
+	private CodeMap preBuilt;
 	
 	private static final Logger logger = LoggerFactory
 			.getLogger(CodeMapBuilder.class);
@@ -23,13 +24,16 @@ public enum CodeMapBuilder {
 		if (inputStream == null) {
 			throw new IllegalArgumentException("You cannot build a CodeMap if the input stream is null.  Verify that you are building an input stream from a file that exists. ");
 		}
+
 		JAXBContext jaxbContext;
 		try {
 			
 			jaxbContext = JAXBContext.newInstance(Codebase.class);
 			Unmarshaller jaxbUM = jaxbContext.createUnmarshaller();
 			Codebase hcp = (Codebase) jaxbUM.unmarshal(inputStream);
-			return new CodeMap(hcp);
+      CodeMap cm = new CodeMap(hcp);
+      this.preBuilt = cm;
+      return cm;
 		} catch (JAXBException e) {
 			throw new RuntimeException("Could not marshall the codemap", e);
 		}
@@ -39,7 +43,14 @@ public enum CodeMapBuilder {
 		InputStream is = new ByteArrayInputStream(codebaseXml.getBytes());
 		return getCodeMap(is);
 	}
-	
+
+	public CodeMap getCompiledCodeMap() {
+		if (preBuilt == null) {
+			preBuilt = getCodeMapFromClasspathResource("/Compiled.xml");
+		}
+		return preBuilt;
+	}
+
 	public CodeMap getCodeMapFromClasspathResource(String resourcePath) {
 		InputStream is = Object.class.getResourceAsStream(resourcePath);
 		return getCodeMap(is);

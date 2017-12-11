@@ -62,7 +62,8 @@ public enum CodesetType {
 	VACCINE_PRODUCT("VACCINE_PRODUCT","Vaccine Product"),
 	VACCINE_TYPE("VACCINE_TYPE","Vaccine Type"), 
 	VACCINATION_NDC_CODE_UNIT_OF_SALE("VACCINATION_NDC_CODE_UNIT_OF_SALE","Vaccination NDC Code Unit of Sale"), 
-	VACCINATION_NDC_CODE_UNIT_OF_USE("VACCINATION_NDC_CODE_UNIT_OF_USE","Vaccination NDC Code Unit of Use"), 
+	VACCINATION_NDC_CODE_UNIT_OF_USE("VACCINATION_NDC_CODE_UNIT_OF_USE","Vaccination NDC Code Unit of Use"),
+	VACCINATION_NDC_CODE("VACCINATION_NDC_CODE", "Vaccination NDC Code (Use or Sale)"),//This is not actually in the XML. It represents the combination of sale and use.
 	;
 
 	private String description;
