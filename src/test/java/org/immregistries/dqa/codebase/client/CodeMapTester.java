@@ -47,6 +47,14 @@ public class CodeMapTester {
 		ndcString = null;
 		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
 		assertNull(c);
+		
+		ndcString = "51285-0138-50";
+		c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+		assertNotNull(c);
+		
+		Code mvx = cm.getRelatedCode(c, CodesetType.VACCINATION_MANUFACTURER_CODE);
+		assertNotNull(mvx);
+		assertEquals("Barr Laboratories", mvx.getLabel());
 	}
 	
 	@Test

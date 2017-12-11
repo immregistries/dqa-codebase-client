@@ -340,10 +340,32 @@ public class CodeMap {
 		return relatedCodes.get(codeTypeDesired);
 	}
 	
+  /**
+   * This returns the first related code found, if present
+   * 
+   * @param code The code where the reference should be taken from
+   * @param relatedCodesetType The reference codeset that needs to be looked up
+   * @return
+   */
+  public Code getRelatedCode(Code code, CodesetType relatedCodesetType) {
+    if (code != null && code.getReference() != null) {
+      List<LinkTo> links = code.getReference().getLinkTo();
+      for (LinkTo link : links) {
+        if (link != null) {
+          String codesetType = link.getCodeset();
+          CodesetType type = CodesetType.getByTypeCode(codesetType);
+          if (type == relatedCodesetType) {
+            Code relatedCode = this.getCodeForCodeset(type, link.getValue());
+            return relatedCode;
+          }
+        }
+      }
+    }
+    return null;
+  }
+	
 	/**
-	 * Gets the codes defined as related to the code sent in. 
-	 * This method assumes singly related codes.  if there are multiple, you will
-	 * end up with the last one put into the map. 
+	 * Gets the list of codes defined as related to the code sent in. 
 	 * @param c 
 	 * @return Map of Types, and the associated codes. 
 	 */
