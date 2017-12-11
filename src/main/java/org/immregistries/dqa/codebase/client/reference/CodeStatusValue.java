@@ -39,6 +39,10 @@ public enum CodeStatusValue {
 	}
 	
 	public static CodeStatusValue getBy(CodeStatus cs) {
+	  if (cs == null)
+	  {
+	    return VALID;
+	  }
 		return getBy(cs.getStatus());
 	}
 	
