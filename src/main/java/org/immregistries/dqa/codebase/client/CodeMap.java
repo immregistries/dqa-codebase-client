@@ -301,12 +301,14 @@ public class CodeMap {
 //			3. Check if it's mapped to something else by deprecation.
 			if (code != null && mappingOption == Ops.Mapping.MAP) {
 				CodeStatusValue status = CodeStatusValue.getBy(code.getCodeStatus());
-				if (status == CodeStatusValue.DEPRECATED) {
-					String newValue = code.getCodeStatus().getDeprecated().getNewCodeValue();
-					if (logger.isDebugEnabled()) {
-						logger.debug("Mapping to: " + newValue);
-					}
-					code = codeSetMap.get(newValue);
+					if (   status == CodeStatusValue.DEPRECATED
+              && code.getCodeStatus().getDeprecated() != null
+          ) {
+						String newValue = code.getCodeStatus().getDeprecated().getNewCodeValue();
+						if (logger.isDebugEnabled()) {
+							logger.debug("Mapping to: " + newValue);
+						}
+						code = codeSetMap.get(newValue);
 				}
 			}
 		}

@@ -1,19 +1,18 @@
 package org.immregistries.dqa.codebase.client;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 import java.io.InputStream;
 
 import org.immregistries.dqa.codebase.client.generated.Code;
 import org.immregistries.dqa.codebase.client.generated.Codeset;
 import org.immregistries.dqa.codebase.client.reference.CodesetType;
+import org.immregistries.dqa.codebase.client.reference.Ops;
 import org.immregistries.dqa.codebase.client.util.LoggingUtility;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.Assert.*;
 
 public class CodeMapTester {
 	LoggingUtility logutil = new LoggingUtility();
@@ -23,7 +22,18 @@ public class CodeMapTester {
 	
 	private InputStream is = Codeset.class.getResourceAsStream("/Compiled.xml");
 	private CodeMap cm = builder.getCodeMap(is);
-	
+	/**
+	 * Test with deprecated language code.
+	 */
+	@Test
+	public void testDeprecatedUnmappedCode() {
+		String primaryLanguage = "Ar";
+		Code c = cm.getCodeForCodeset(CodesetType.PERSON_LANGUAGE, primaryLanguage, Ops.Mapping.MAP);
+		assertTrue(c != null);
+		assertEquals("Should get the code for Ar, because it doesn't have a map-to value",
+			primaryLanguage, c.getValue());
+	}
+
 	@Test
 	public void ndcCodeTest() {
 		String ndcString = "";
