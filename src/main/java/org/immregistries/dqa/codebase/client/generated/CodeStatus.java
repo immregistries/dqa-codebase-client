@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -53,56 +53,56 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class CodeStatus {
 
-    @XmlElement(required = true)
-    protected String status;
-    protected Deprecated deprecated;
+  @XmlElement(required = true)
+  protected String status;
+  protected Deprecated deprecated;
 
-    /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        return status;
-    }
+  /**
+   * Gets the value of the status property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getStatus() {
+    return status;
+  }
 
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
+  /**
+   * Sets the value of the status property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setStatus(String value) {
+    this.status = value;
+  }
 
-    /**
-     * Gets the value of the deprecated property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Deprecated }
-     *     
-     */
-    public Deprecated getDeprecated() {
-        return deprecated;
-    }
+  /**
+   * Gets the value of the deprecated property.
+   *
+   * @return
+   *     possible object is
+   *     {@link Deprecated }
+   *
+   */
+  public Deprecated getDeprecated() {
+    return deprecated;
+  }
 
-    /**
-     * Sets the value of the deprecated property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Deprecated }
-     *     
-     */
-    public void setDeprecated(Deprecated value) {
-        this.deprecated = value;
-    }
+  /**
+   * Sets the value of the deprecated property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link Deprecated }
+   *
+   */
+  public void setDeprecated(Deprecated value) {
+    this.deprecated = value;
+  }
 
 }

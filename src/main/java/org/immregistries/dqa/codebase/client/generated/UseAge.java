@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -41,41 +41,41 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UseAge {
 
-    @XmlElement(name = "not-before-month")
-    protected int notBeforeMonth;
-    @XmlElement(name = "not-after-month")
-    protected int notAfterMonth;
+  @XmlElement(name = "not-before-month")
+  protected int notBeforeMonth;
+  @XmlElement(name = "not-after-month")
+  protected int notAfterMonth;
 
-    /**
-     * Gets the value of the notBeforeMonth property.
-     * 
-     */
-    public int getNotBeforeMonth() {
-        return notBeforeMonth;
-    }
+  /**
+   * Gets the value of the notBeforeMonth property.
+   *
+   */
+  public int getNotBeforeMonth() {
+    return notBeforeMonth;
+  }
 
-    /**
-     * Sets the value of the notBeforeMonth property.
-     * 
-     */
-    public void setNotBeforeMonth(int value) {
-        this.notBeforeMonth = value;
-    }
+  /**
+   * Sets the value of the notBeforeMonth property.
+   *
+   */
+  public void setNotBeforeMonth(int value) {
+    this.notBeforeMonth = value;
+  }
 
-    /**
-     * Gets the value of the notAfterMonth property.
-     * 
-     */
-    public int getNotAfterMonth() {
-        return notAfterMonth;
-    }
+  /**
+   * Gets the value of the notAfterMonth property.
+   *
+   */
+  public int getNotAfterMonth() {
+    return notAfterMonth;
+  }
 
-    /**
-     * Sets the value of the notAfterMonth property.
-     * 
-     */
-    public void setNotAfterMonth(int value) {
-        this.notAfterMonth = value;
-    }
+  /**
+   * Sets the value of the notAfterMonth property.
+   *
+   */
+  public void setNotAfterMonth(int value) {
+    this.notAfterMonth = value;
+  }
 
 }

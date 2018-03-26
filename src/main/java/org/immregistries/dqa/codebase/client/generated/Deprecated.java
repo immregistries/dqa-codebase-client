@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -43,83 +43,83 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Deprecated {
 
-    @XmlElement(name = "new-code-value", required = true)
-    protected String newCodeValue;
-    @XmlElement(required = true)
-    protected String reason;
-    @XmlElement(name = "effective-date", required = true)
-    protected String effectiveDate;
+  @XmlElement(name = "new-code-value", required = true)
+  protected String newCodeValue;
+  @XmlElement(required = true)
+  protected String reason;
+  @XmlElement(name = "effective-date", required = true)
+  protected String effectiveDate;
 
-    /**
-     * Gets the value of the newCodeValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNewCodeValue() {
-        return newCodeValue;
-    }
+  /**
+   * Gets the value of the newCodeValue property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getNewCodeValue() {
+    return newCodeValue;
+  }
 
-    /**
-     * Sets the value of the newCodeValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNewCodeValue(String value) {
-        this.newCodeValue = value;
-    }
+  /**
+   * Sets the value of the newCodeValue property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setNewCodeValue(String value) {
+    this.newCodeValue = value;
+  }
 
-    /**
-     * Gets the value of the reason property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getReason() {
-        return reason;
-    }
+  /**
+   * Gets the value of the reason property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getReason() {
+    return reason;
+  }
 
-    /**
-     * Sets the value of the reason property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setReason(String value) {
-        this.reason = value;
-    }
+  /**
+   * Sets the value of the reason property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setReason(String value) {
+    this.reason = value;
+  }
 
-    /**
-     * Gets the value of the effectiveDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEffectiveDate() {
-        return effectiveDate;
-    }
+  /**
+   * Gets the value of the effectiveDate property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getEffectiveDate() {
+    return effectiveDate;
+  }
 
-    /**
-     * Sets the value of the effectiveDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEffectiveDate(String value) {
-        this.effectiveDate = value;
-    }
+  /**
+   * Sets the value of the effectiveDate property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setEffectiveDate(String value) {
+    this.effectiveDate = value;
+  }
 
 }

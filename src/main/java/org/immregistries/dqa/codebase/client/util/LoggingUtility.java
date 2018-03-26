@@ -6,10 +6,10 @@ import org.slf4j.LoggerFactory;
 
 public class LoggingUtility {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(LoggingUtility.class);
+  private static final Logger logger = LoggerFactory
+      .getLogger(LoggingUtility.class);
 
-	public String stringify(Object o) {
-			return ReflectionToStringBuilder.toString(o);
-	}
+  public String stringify(Object o) {
+    return ReflectionToStringBuilder.toString(o);
+  }
 }

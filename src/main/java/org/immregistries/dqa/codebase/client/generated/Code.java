@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -103,8 +103,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -120,238 +120,238 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Code {
 
-	@XmlElement(required = true)
-    protected String value;
-    @XmlElement(required = true)
-    protected String label;
-    @XmlElement(required = true)
-    protected String description;
-    @XmlElement(name = "code-status", required = true)
-    protected CodeStatus codeStatus;
-    protected Reference reference;
-    @XmlElement(name = "use-date")
-    protected UseDate useDate;
-    @XmlElement(name = "use-age")
-    protected UseAge useAge;
-    @XmlElement(name = "concept-type")
-    protected String conceptType;
-    @XmlElement(name = "test-age")
-    protected String testAge;
+  @XmlElement(required = true)
+  protected String value;
+  @XmlElement(required = true)
+  protected String label;
+  @XmlElement(required = true)
+  protected String description;
+  @XmlElement(name = "code-status", required = true)
+  protected CodeStatus codeStatus;
+  protected Reference reference;
+  @XmlElement(name = "use-date")
+  protected UseDate useDate;
+  @XmlElement(name = "use-age")
+  protected UseAge useAge;
+  @XmlElement(name = "concept-type")
+  protected String conceptType;
+  @XmlElement(name = "test-age")
+  protected String testAge;
 
-    /**
-     * Gets the value of the value property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getValue() {
-        return value;
-    }
+  /**
+   * Gets the value of the value property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getValue() {
+    return value;
+  }
 
-    /**
-     * Sets the value of the value property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setValue(String value) {
-        this.value = value;
-    }
+  /**
+   * Sets the value of the value property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setValue(String value) {
+    this.value = value;
+  }
 
-    /**
-     * Gets the value of the label property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLabel() {
-        return label;
-    }
+  /**
+   * Gets the value of the label property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getLabel() {
+    return label;
+  }
 
-    /**
-     * Sets the value of the label property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLabel(String value) {
-        this.label = value;
-    }
+  /**
+   * Sets the value of the label property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setLabel(String value) {
+    this.label = value;
+  }
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+  /**
+   * Gets the value of the description property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getDescription() {
+    return description;
+  }
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+  /**
+   * Sets the value of the description property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setDescription(String value) {
+    this.description = value;
+  }
 
-    /**
-     * Gets the value of the codeStatus property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CodeStatus }
-     *     
-     */
-    public CodeStatus getCodeStatus() {
-        return codeStatus;
-    }
+  /**
+   * Gets the value of the codeStatus property.
+   *
+   * @return
+   *     possible object is
+   *     {@link CodeStatus }
+   *
+   */
+  public CodeStatus getCodeStatus() {
+    return codeStatus;
+  }
 
-    /**
-     * Sets the value of the codeStatus property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CodeStatus }
-     *     
-     */
-    public void setCodeStatus(CodeStatus value) {
-        this.codeStatus = value;
-    }
+  /**
+   * Sets the value of the codeStatus property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link CodeStatus }
+   *
+   */
+  public void setCodeStatus(CodeStatus value) {
+    this.codeStatus = value;
+  }
 
-    /**
-     * Gets the value of the reference property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Reference }
-     *     
-     */
-    public Reference getReference() {
-        return reference;
-    }
+  /**
+   * Gets the value of the reference property.
+   *
+   * @return
+   *     possible object is
+   *     {@link Reference }
+   *
+   */
+  public Reference getReference() {
+    return reference;
+  }
 
-    /**
-     * Sets the value of the reference property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Reference }
-     *     
-     */
-    public void setReference(Reference value) {
-        this.reference = value;
-    }
+  /**
+   * Sets the value of the reference property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link Reference }
+   *
+   */
+  public void setReference(Reference value) {
+    this.reference = value;
+  }
 
-    /**
-     * Gets the value of the useDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UseDate }
-     *     
-     */
-    public UseDate getUseDate() {
-        return useDate;
-    }
+  /**
+   * Gets the value of the useDate property.
+   *
+   * @return
+   *     possible object is
+   *     {@link UseDate }
+   *
+   */
+  public UseDate getUseDate() {
+    return useDate;
+  }
 
-    /**
-     * Sets the value of the useDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UseDate }
-     *     
-     */
-    public void setUseDate(UseDate value) {
-        this.useDate = value;
-    }
+  /**
+   * Sets the value of the useDate property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link UseDate }
+   *
+   */
+  public void setUseDate(UseDate value) {
+    this.useDate = value;
+  }
 
-    /**
-     * Gets the value of the useAge property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UseAge }
-     *     
-     */
-    public UseAge getUseAge() {
-        return useAge;
-    }
+  /**
+   * Gets the value of the useAge property.
+   *
+   * @return
+   *     possible object is
+   *     {@link UseAge }
+   *
+   */
+  public UseAge getUseAge() {
+    return useAge;
+  }
 
-    /**
-     * Sets the value of the useAge property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UseAge }
-     *     
-     */
-    public void setUseAge(UseAge value) {
-        this.useAge = value;
-    }
+  /**
+   * Sets the value of the useAge property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link UseAge }
+   *
+   */
+  public void setUseAge(UseAge value) {
+    this.useAge = value;
+  }
 
-    /**
-     * Gets the value of the conceptType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getConceptType() {
-        return conceptType;
-    }
+  /**
+   * Gets the value of the conceptType property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getConceptType() {
+    return conceptType;
+  }
 
-    /**
-     * Sets the value of the conceptType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setConceptType(String value) {
-        this.conceptType = value;
-    }
+  /**
+   * Sets the value of the conceptType property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setConceptType(String value) {
+    this.conceptType = value;
+  }
 
-    /**
-     * Gets the value of the testAge property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTestAge() {
-        return testAge;
-    }
+  /**
+   * Gets the value of the testAge property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getTestAge() {
+    return testAge;
+  }
 
-    /**
-     * Sets the value of the testAge property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTestAge(String value) {
-        this.testAge = value;
-    }
+  /**
+   * Sets the value of the testAge property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setTestAge(String value) {
+    this.testAge = value;
+  }
 
 }

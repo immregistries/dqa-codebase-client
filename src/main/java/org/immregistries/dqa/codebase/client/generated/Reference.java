@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -49,36 +49,36 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Reference {
 
-    @XmlElement(name = "link-to")
-    protected List<LinkTo> linkTo;
+  @XmlElement(name = "link-to")
+  protected List<LinkTo> linkTo;
 
-    /**
-     * Gets the value of the linkTo property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the linkTo property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLinkTo().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link LinkTo }
-     * 
-     * 
-     */
-    public List<LinkTo> getLinkTo() {
-        if (linkTo == null) {
-            linkTo = new ArrayList<LinkTo>();
-        }
-        return this.linkTo;
+  /**
+   * Gets the value of the linkTo property.
+   *
+   * <p>
+   * This accessor method returns a reference to the live list,
+   * not a snapshot. Therefore any modification you make to the
+   * returned list will be present inside the JAXB object.
+   * This is why there is not a <CODE>set</CODE> method for the linkTo property.
+   *
+   * <p>
+   * For example, to add a new item, do as follows:
+   * <pre>
+   *    getLinkTo().add(newItem);
+   * </pre>
+   *
+   *
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link LinkTo }
+   *
+   *
+   */
+  public List<LinkTo> getLinkTo() {
+    if (linkTo == null) {
+      linkTo = new ArrayList<LinkTo>();
     }
+    return this.linkTo;
+  }
 
 }

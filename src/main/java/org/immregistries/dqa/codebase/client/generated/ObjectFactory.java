@@ -23,89 +23,89 @@ import javax.xml.bind.annotation.XmlRegistry;
  * type definitions, element declarations and model 
  * groups.  Factory methods for each of these are 
  * provided in this class.
- * 
+ *
  */
 @XmlRegistry
 public class ObjectFactory {
 
 
-    /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.openimmunizationsoftware.dqa.codebase.generated
-     * 
-     */
-    public ObjectFactory() {
-    }
+  /**
+   * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.openimmunizationsoftware.dqa.codebase.generated
+   *
+   */
+  public ObjectFactory() {
+  }
 
-    /**
-     * Create an instance of {@link Codebase }
-     * 
-     */
-    public Codebase createCodebase() {
-        return new Codebase();
-    }
+  /**
+   * Create an instance of {@link Codebase }
+   *
+   */
+  public Codebase createCodebase() {
+    return new Codebase();
+  }
 
-    /**
-     * Create an instance of {@link Codeset }
-     * 
-     */
-    public Codeset createCodeset() {
-        return new Codeset();
-    }
+  /**
+   * Create an instance of {@link Codeset }
+   *
+   */
+  public Codeset createCodeset() {
+    return new Codeset();
+  }
 
-    /**
-     * Create an instance of {@link Code }
-     * 
-     */
-    public Code createCode() {
-        return new Code();
-    }
+  /**
+   * Create an instance of {@link Code }
+   *
+   */
+  public Code createCode() {
+    return new Code();
+  }
 
-    /**
-     * Create an instance of {@link CodeStatus }
-     * 
-     */
-    public CodeStatus createCodeStatus() {
-        return new CodeStatus();
-    }
+  /**
+   * Create an instance of {@link CodeStatus }
+   *
+   */
+  public CodeStatus createCodeStatus() {
+    return new CodeStatus();
+  }
 
-    /**
-     * Create an instance of {@link Reference }
-     * 
-     */
-    public Reference createReference() {
-        return new Reference();
-    }
+  /**
+   * Create an instance of {@link Reference }
+   *
+   */
+  public Reference createReference() {
+    return new Reference();
+  }
 
-    /**
-     * Create an instance of {@link UseDate }
-     * 
-     */
-    public UseDate createUseDate() {
-        return new UseDate();
-    }
+  /**
+   * Create an instance of {@link UseDate }
+   *
+   */
+  public UseDate createUseDate() {
+    return new UseDate();
+  }
 
-    /**
-     * Create an instance of {@link UseAge }
-     * 
-     */
-    public UseAge createUseAge() {
-        return new UseAge();
-    }
+  /**
+   * Create an instance of {@link UseAge }
+   *
+   */
+  public UseAge createUseAge() {
+    return new UseAge();
+  }
 
-    /**
-     * Create an instance of {@link LinkTo }
-     * 
-     */
-    public LinkTo createLinkTo() {
-        return new LinkTo();
-    }
+  /**
+   * Create an instance of {@link LinkTo }
+   *
+   */
+  public LinkTo createLinkTo() {
+    return new LinkTo();
+  }
 
-    /**
-     * Create an instance of {@link Deprecated }
-     * 
-     */
-    public Deprecated createDeprecated() {
-        return new Deprecated();
-    }
+  /**
+   * Create an instance of {@link Deprecated }
+   *
+   */
+  public Deprecated createDeprecated() {
+    return new Deprecated();
+  }
 
 }

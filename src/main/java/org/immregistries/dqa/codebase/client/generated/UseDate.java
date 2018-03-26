@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -33,8 +33,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -45,109 +45,109 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UseDate {
 
-    @XmlElement(name = "not-before", required = true)
-    protected String notBefore;
-    @XmlElement(name = "not-expected-before", required = true)
-    protected String notExpectedBefore;
-    @XmlElement(name = "not-expected-after", required = true)
-    protected String notExpectedAfter;
-    @XmlElement(name = "not-after", required = true)
-    protected String notAfter;
+  @XmlElement(name = "not-before", required = true)
+  protected String notBefore;
+  @XmlElement(name = "not-expected-before", required = true)
+  protected String notExpectedBefore;
+  @XmlElement(name = "not-expected-after", required = true)
+  protected String notExpectedAfter;
+  @XmlElement(name = "not-after", required = true)
+  protected String notAfter;
 
-    /**
-     * Gets the value of the notBefore property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNotBefore() {
-        return notBefore;
-    }
+  /**
+   * Gets the value of the notBefore property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getNotBefore() {
+    return notBefore;
+  }
 
-    /**
-     * Sets the value of the notBefore property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNotBefore(String value) {
-        this.notBefore = value;
-    }
+  /**
+   * Sets the value of the notBefore property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setNotBefore(String value) {
+    this.notBefore = value;
+  }
 
-    /**
-     * Gets the value of the notExpectedBefore property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNotExpectedBefore() {
-        return notExpectedBefore;
-    }
+  /**
+   * Gets the value of the notExpectedBefore property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getNotExpectedBefore() {
+    return notExpectedBefore;
+  }
 
-    /**
-     * Sets the value of the notExpectedBefore property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNotExpectedBefore(String value) {
-        this.notExpectedBefore = value;
-    }
+  /**
+   * Sets the value of the notExpectedBefore property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setNotExpectedBefore(String value) {
+    this.notExpectedBefore = value;
+  }
 
-    /**
-     * Gets the value of the notExpectedAfter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNotExpectedAfter() {
-        return notExpectedAfter;
-    }
+  /**
+   * Gets the value of the notExpectedAfter property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getNotExpectedAfter() {
+    return notExpectedAfter;
+  }
 
-    /**
-     * Sets the value of the notExpectedAfter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNotExpectedAfter(String value) {
-        this.notExpectedAfter = value;
-    }
+  /**
+   * Sets the value of the notExpectedAfter property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setNotExpectedAfter(String value) {
+    this.notExpectedAfter = value;
+  }
 
-    /**
-     * Gets the value of the notAfter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNotAfter() {
-        return notAfter;
-    }
+  /**
+   * Gets the value of the notAfter property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getNotAfter() {
+    return notAfter;
+  }
 
-    /**
-     * Sets the value of the notAfter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNotAfter(String value) {
-        this.notAfter = value;
-    }
+  /**
+   * Sets the value of the notAfter property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setNotAfter(String value) {
+    this.notAfter = value;
+  }
 
 }

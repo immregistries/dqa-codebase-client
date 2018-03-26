@@ -17,9 +17,9 @@ import javax.xml.bind.annotation.XmlValue;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;simpleContent>
@@ -29,8 +29,8 @@ import javax.xml.bind.annotation.XmlValue;
  *   &lt;/simpleContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -38,57 +38,57 @@ import javax.xml.bind.annotation.XmlValue;
 })
 public class LinkTo {
 
-    @XmlValue
-    protected String value;
-    @XmlAttribute(name = "codeset")
-    protected String codeset;
+  @XmlValue
+  protected String value;
+  @XmlAttribute(name = "codeset")
+  protected String codeset;
 
-    /**
-     * Gets the value of the value property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getValue() {
-        return value;
-    }
+  /**
+   * Gets the value of the value property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getValue() {
+    return value;
+  }
 
-    /**
-     * Sets the value of the value property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setValue(String value) {
-        this.value = value;
-    }
+  /**
+   * Sets the value of the value property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setValue(String value) {
+    this.value = value;
+  }
 
-    /**
-     * Gets the value of the codeset property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCodeset() {
-        return codeset;
-    }
+  /**
+   * Gets the value of the codeset property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getCodeset() {
+    return codeset;
+  }
 
-    /**
-     * Sets the value of the codeset property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCodeset(String value) {
-        this.codeset = value;
-    }
+  /**
+   * Sets the value of the codeset property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setCodeset(String value) {
+    this.codeset = value;
+  }
 
 }

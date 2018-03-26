@@ -6,5 +6,9 @@ package org.immregistries.dqa.codebase.client.reference;
  *
  */
 public class Ops {
-	public enum Mapping {MAP, DO_NOT_MAP}
+
+  public enum Mapping {
+    MAP,
+    DO_NOT_MAP
+  }
 }
