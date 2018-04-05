@@ -16,7 +16,7 @@ public class CodeMapBuilderTester {
 
   @Test
   public final void testGetCodeMap() throws FileNotFoundException {
-    InputStream is = Object.class.getResourceAsStream("/DQA_CM_1.0.xml");
+    InputStream is = Object.class.getResourceAsStream("/Compiled.xml");
 
     CodeMap cm = builder.getCodeMap(is);
     assertNotNull(cm);
@@ -30,6 +30,34 @@ public class CodeMapBuilderTester {
     Code immunity = cm.getCodeForCodeset(CodesetType.EVIDENCE_OF_IMMUNITY, "38907003");
     assertEquals("Should have 38907003", "38907003", immunity.getValue());
 
+  }
+
+  public void verifyCodeMap(CodeMap cm) {
+    assertNotNull(cm);
+
+    Collection<Code> codes = cm.getCodesForTable(CodesetType.EVIDENCE_OF_IMMUNITY);
+
+    assertNotNull(codes);
+
+    assertEquals("There should be a bunch of codes", 32, codes.size());
+
+    Code immunity = cm.getCodeForCodeset(CodesetType.EVIDENCE_OF_IMMUNITY, "38907003");
+    assertEquals("Should have 38907003", "38907003", immunity.getValue());
+  }
+
+
+  @Test
+  public final void testGetCodeMapFromDir() throws FileNotFoundException {
+    InputStream is = builder.getCodeMapFromSameDirAsJar("Compiled-test.xml");
+    CodeMap cm = builder.getCodeMap(is);
+    verifyCodeMap(cm);
+  }
+
+
+  @Test
+  public final void testGetDefaultCodeMap()  {
+    CodeMap cm = builder.getCompiledCodeMap();
+    verifyCodeMap(cm);
   }
 
 }

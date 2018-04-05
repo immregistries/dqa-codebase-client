@@ -3,6 +3,7 @@ package org.immregistries.dqa.codebase.client.reference;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +16,7 @@ import org.junit.Test;
 
 public class RelatedCodesTester {
 
-  private CodeMap codeMapper = CodeMapBuilder.INSTANCE
-      .getCodeMapFromClasspathResource("/Compiled.xml");
+  private CodeMap codeMapper = CodeMapBuilder.INSTANCE.getDefaultCodeMap();
   private RelatedCode rc = new RelatedCode(codeMapper);
 
   @Test
@@ -45,7 +45,7 @@ public class RelatedCodesTester {
   }
 
   @Test
-  public void relatedValueTest() {
+  public void relatedValueTestNdc() {
     String ndcCode = "00006-4047-20";
     Code code = codeMapper
         .getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcCode);
@@ -58,9 +58,13 @@ public class RelatedCodesTester {
   }
 
   @Test
-  public void relatedValueTest2() {
-    String ndcCode = "00006-4047-20";
+  public void getRelatedValue() {
+    String ndcCode = "xxxxx-4047-20";
     String cvx = rc.getCvxValueFromNdcString(ndcCode);
+    assertEquals("Should be empty", "", cvx);
+
+    ndcCode = "00006-4047-20";
+    cvx = rc.getCvxValueFromNdcString(ndcCode);
     assertEquals("should STILL be 116", "116", cvx);
 
     List<String> vaccineGroup = rc.getVaccineGroupLabelsFromCvx(cvx);

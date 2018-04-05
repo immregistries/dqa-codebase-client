@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.*;
 
 import java.io.InputStream;
 import org.immregistries.dqa.codebase.client.generated.Code;
 import org.immregistries.dqa.codebase.client.generated.Codeset;
-import org.immregistries.dqa.codebase.client.reference.CodesetType;
 import org.immregistries.dqa.codebase.client.reference.Ops;
 import org.immregistries.dqa.codebase.client.util.LoggingUtility;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class CodeMapTester {
   @Test
   public void testDeprecatedUnmappedCode() {
     String primaryLanguage = "Ar";
-    Code c = cm.getCodeForCodeset(CodesetType.PERSON_LANGUAGE, primaryLanguage, Ops.Mapping.MAP);
+    Code c = cm.getCodeForCodeset(PERSON_LANGUAGE, primaryLanguage, Ops.Mapping.MAP);
     assertTrue(c != null);
     assertEquals("Should get the code for Ar, because it doesn't have a map-to value",
         primaryLanguage, c.getValue());
@@ -42,31 +42,31 @@ public class CodeMapTester {
   public void ndcCodeTest() {
     String ndcString = "";
     ndcString = "49281-0400-05";
-    Code c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+    Code c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
     assertNotNull(c);
     assertEquals(ndcString + " should find in unit of sale bucket ", ndcString, c.getValue());
 
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE, ndcString);
     assertNotNull(c);
     assertEquals(ndcString + " should find in the generic NDC bucket ", ndcString, c.getValue());
 
     ndcString = "asfasfjask;fj2f3";
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
     assertNull(c);
 
     ndcString = "";
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
     assertNull(c);
 
     ndcString = null;
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
     assertNull(c);
 
     ndcString = "51285-0138-50";
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
     assertNotNull(c);
 
-    Code mvx = cm.getRelatedCode(c, CodesetType.VACCINATION_MANUFACTURER_CODE);
+    Code mvx = cm.getRelatedCode(c, VACCINATION_MANUFACTURER_CODE);
     assertNotNull(mvx);
     assertEquals("Barr Laboratories", mvx.getLabel());
   }
@@ -76,23 +76,23 @@ public class CodeMapTester {
     String ndcString = "";
 
     ndcString = "49281-400-05";
-    Code c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+    Code c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
     assertNotNull(c);
     assertEquals(ndcString + " should be a mapped code.  not the same", "49281-0400-05",
         c.getValue());
 
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE, ndcString);
     assertNotNull(c);
     assertEquals(ndcString + " should find in the generic NDC bucket ", "49281-0400-05",
         c.getValue());
 
     ndcString = "49281-400-10";
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, ndcString);
     assertNotNull(c);
     assertEquals(ndcString + " should be a mapped code.  not the same", "49281-0400-10",
         c.getValue());
 
-    c = cm.getCodeForCodeset(CodesetType.VACCINATION_NDC_CODE, ndcString);
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE, ndcString);
     assertNotNull(c);
     assertEquals(ndcString + " should find in the generic NDC bucket ", "49281-0400-10",
         c.getValue());
@@ -121,12 +121,12 @@ public class CodeMapTester {
 
   @Test
   public void testFindCodeEntry() {
-    InputStream is = Codeset.class.getResourceAsStream("/DQA_CM_1.0.xml");
+    InputStream is = Codeset.class.getResourceAsStream("/Compiled.xml");
     CodeMap cm = builder.getCodeMap(is);
     logger.info(logutil.stringify(cm));
 
     {
-      Code iv = cm.getCodeForCodeset(CodesetType.BODY_ROUTE, "IV");
+      Code iv = cm.getCodeForCodeset(BODY_ROUTE, "IV");
 
       logger.info(logutil.stringify(iv));
 
@@ -135,7 +135,7 @@ public class CodeMapTester {
     }
 
     {
-      Code mmr = cm.getCodeForCodeset(CodesetType.VACCINATION_CVX_CODE, "03");
+      Code mmr = cm.getCodeForCodeset(VACCINATION_CVX_CODE, "03");
       logger.info(logutil.stringify(mmr));
 
       assertNotNull(mmr);
