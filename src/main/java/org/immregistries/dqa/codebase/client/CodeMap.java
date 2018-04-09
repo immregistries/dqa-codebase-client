@@ -285,8 +285,29 @@ public class CodeMap {
     return this.getCodeForCodeset(c, value, Ops.Mapping.MAP);
   }
 
+  Code checkVariants(CodesetType c, String value) {
+    if (StringUtils.isBlank(value)) {
+      return null;
+    }
+    //Sometimes bar code scanners introduce a 12th character into the code...
+    //let's try to fix it if that caused problems.
+    if (
+        (value.length() == 12 || value.length() == 14) //dashes or no dashes
+        && (c == CodesetType.VACCINATION_NDC_CODE
+         || c == CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE
+         || c == CodesetType.VACCINATION_NDC_CODE_UNIT_OF_USE )) {
+      return codeBaseMap.get(c).get(value.substring(1));
+    }
+
+    return null;
+  }
+
   public Code getCodeForCodeset(CodesetType c, String value, Ops.Mapping mappingOption) {
     Code code = null;
+
+    if (StringUtils.isBlank(value)) {
+      return code;
+    }
 
 //		1. Get the codeset
     Map<String, Code> codeSetMap = codeBaseMap.get(c);
@@ -295,12 +316,16 @@ public class CodeMap {
 
 //			2. get the code
       code = codeSetMap.get(value);
+
+//      2.1 if the code isn't found, check for some known variations on expressing the codes.
+      if (code == null) {
+        code = checkVariants(c, value);
+      }
+
       if (logger.isDebugEnabled()) {
         logger.debug("found code: " + code);
         if (code != null) {
-          logger.debug(
-              code.getLabel() + code.getCodeStatus() != null ? " status: " + code.getCodeStatus()
-                  .getStatus() : " status: null");
+          logger.debug(code.getLabel() != null && code.getCodeStatus() != null ? " status: " + code.getCodeStatus().getStatus() : " status: null");
         }
       }
 

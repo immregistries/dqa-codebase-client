@@ -1,11 +1,17 @@
 package org.immregistries.dqa.codebase.client;
 
 
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.BODY_ROUTE;
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.PERSON_LANGUAGE;
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.VACCINATION_CVX_CODE;
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.VACCINATION_MANUFACTURER_CODE;
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.VACCINATION_NDC_CODE;
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.VACCINATION_NDC_CODE_UNIT_OF_SALE;
+import static org.immregistries.dqa.codebase.client.reference.CodesetType.VACCINATION_NDC_CODE_UNIT_OF_USE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.immregistries.dqa.codebase.client.reference.CodesetType.*;
 
 import java.io.InputStream;
 import org.immregistries.dqa.codebase.client.generated.Code;
@@ -39,6 +45,46 @@ public class CodeMapTester {
   }
 
   @Test
+  public void testVariants() {
+    String longNdcString = "149281-0400-05";
+    String expectedNdcString = "49281-0400-05";
+
+    Code c = cm.checkVariants(VACCINATION_NDC_CODE_UNIT_OF_SALE, longNdcString);
+    assertNotNull(c);
+    assertEquals(longNdcString + " should find in unit of sale bucket ", expectedNdcString, c.getValue());
+
+    c = cm.checkVariants(VACCINATION_NDC_CODE_UNIT_OF_USE, longNdcString);
+    assertEquals("Should not find it for USE", null, c);
+
+    c = cm.checkVariants(VACCINATION_NDC_CODE, longNdcString);
+    assertEquals("Should find it for general NDC", expectedNdcString, c.getValue());
+
+    longNdcString = "149281040005";
+    expectedNdcString = "49281040005";
+
+    c = cm.checkVariants(VACCINATION_NDC_CODE_UNIT_OF_SALE, longNdcString);
+    assertNotNull(c);
+    assertEquals(longNdcString + " should find in unit of sale bucket ", expectedNdcString, c.getValue());
+
+    c = cm.checkVariants(VACCINATION_NDC_CODE_UNIT_OF_USE, longNdcString);
+    assertEquals("Should not find it for USE", null, c);
+
+    c = cm.checkVariants(VACCINATION_NDC_CODE, longNdcString);
+    assertEquals("Should find it for general NDC", expectedNdcString, c.getValue());
+
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_SALE, longNdcString);
+    assertNotNull(c);
+    assertEquals(longNdcString + " should find in unit of sale bucket ", "49281-0400-05", c.getValue());
+
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE_UNIT_OF_USE, longNdcString);
+    assertEquals("Should not find it for USE", null, c);
+
+    c = cm.getCodeForCodeset(VACCINATION_NDC_CODE, longNdcString);
+    assertEquals("Should find it for general NDC", "49281-0400-05", c.getValue());
+
+  }
+
+    @Test
   public void ndcCodeTest() {
     String ndcString = "";
     ndcString = "49281-0400-05";
