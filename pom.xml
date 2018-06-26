@@ -7,8 +7,8 @@
 	<version>2.1</version>
 	<packaging>jar</packaging>
 
-	<name>Client Jar for using the MQE Codebase</name>
-	<description>Reads the MQE Codebase XML and provides helper classes to use it.</description>
+	<name>Client Jar for using the Codebase</name>
+	<description>Reads the Codebase XML and provides helper classes to use it.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
