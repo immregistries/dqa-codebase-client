@@ -10,7 +10,7 @@ Beyond this there are more practical benefits:
 
 We don't want to hook our project directly to the CDC project, if they make a mistake we have no buffer.  
 
-We need to have a manual check and sign off from the community before any concepts change in the DQA.  
+We need to have a manual check and sign off from the community before any concepts change in the MQE.  
 
 The same with an IIS, sure it's important to have tools to automate this process so we really need the CDC to have a web service
   
@@ -18,4 +18,4 @@ But we should have another step where we verify the concepts and make sure we ha
 
 I've had a lot of experience with CDC not getting the needs at the production level and making changes that break our model.
 
-So a buffer is critical. That is what the DQA code base project is for us.
+So a buffer is critical. That is what the MQE code base project is for us.

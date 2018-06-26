@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.immregistries</groupId>
-	<artifactId>dqa-codebase-client</artifactId>
+	<artifactId>codebase-client</artifactId>
 	<version>2.1</version>
 	<packaging>jar</packaging>
 
-	<name>Client Jar for using the DQA Codebase</name>
-	<description>Reads the DQA Codebase XML and provides helper classes to use it.</description>
+	<name>Client Jar for using the MQE Codebase</name>
+	<description>Reads the MQE Codebase XML and provides helper classes to use it.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
