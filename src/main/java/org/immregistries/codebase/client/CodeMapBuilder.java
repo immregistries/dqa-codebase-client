@@ -60,12 +60,16 @@ public enum CodeMapBuilder {
         logger.warn("Using Compiled.xml from classpath (resources folder in jar)");
       }
     }
+    
     if (is != null) {
       cm = getCodeMap(is);
     } else {
-      throw new IllegalArgumentException(
-          "You cannot build a CodeMap if the input stream is null.  Verify that you are building an input stream from a file that exists. ");
+    	cm = null;
+    	logger.error("Can't Find Compiled.xml file.");
+    	System.exit(78);
+    	//throw new IllegalArgumentException("You cannot build a CodeMap if the input stream is null.  Verify that you are building an input stream from a file that exists. ");
     }
+    
     return cm;
   }
 
