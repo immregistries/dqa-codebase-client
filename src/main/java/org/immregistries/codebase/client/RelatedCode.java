@@ -19,12 +19,13 @@ public class RelatedCode {
 
   public List<String> getVaccineGroupLabelsFromCvx(String cvx) {
     List<String> grouplabels = new ArrayList<>();
-    List<Code> cvxVaccineGroups = this.map.getRelatedCodesForCodeIn(
-        CodesetType.VACCINATION_CVX_CODE, cvx,
-        CodesetType.VACCINE_GROUP);
+    List<Code> cvxVaccineGroups = this.map
+        .getRelatedCodesForCodeIn(CodesetType.VACCINATION_CVX_CODE, cvx, CodesetType.VACCINE_GROUP);
     if (cvxVaccineGroups != null) {
       for (Code c : cvxVaccineGroups) {
-        grouplabels.add(c.getLabel());
+        if (c != null) {
+          grouplabels.add(c.getLabel());
+        }
       }
     }
     return grouplabels;
