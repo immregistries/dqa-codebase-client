@@ -428,6 +428,10 @@ public class CodeMap {
 
   public Collection<Code> getCodesForTable(CodesetType c) {
     Map<String, Code> codeSetMap = codeBaseMap.get(c);
+    if (codeSetMap == null)
+    {
+      return null;
+    }
     return codeSetMap.values();
   }
 
