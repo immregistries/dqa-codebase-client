@@ -77,7 +77,8 @@ public enum CodeMapBuilder {
   }
 
   public InputStream getCodeMapFromClasspathResource(String resourcePath) {
-    return Object.class.getResourceAsStream(resourcePath);
+    logger.warn("Getting resource [" + resourcePath + "]" );
+    return getClass().getClassLoader().getResourceAsStream(resourcePath);
   }
 
   public InputStream getCodeMapFromSameDirAsJar(String resourcePath) throws FileNotFoundException {
