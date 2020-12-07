@@ -46,7 +46,7 @@ public enum CodeMapBuilder {
     return getCodeMap(is);
   }
 
-  public CodeMap getDefaultCodeMap() {
+  CodeMap findAndReadCodeMapIntoMemory() {
     CodeMap cm;
     String file = "Compiled.xml";
     InputStream is;
@@ -69,9 +69,14 @@ public enum CodeMapBuilder {
     return cm;
   }
 
+
+  public CodeMap getDefaultCodeMap() {
+    return getCompiledCodeMap();
+  }
+
   public CodeMap getCompiledCodeMap() {
     if (preBuilt == null) {
-      this.preBuilt = getDefaultCodeMap();
+      this.preBuilt = findAndReadCodeMapIntoMemory();
     }
     return preBuilt;
   }

@@ -382,7 +382,7 @@ public class CodeMap {
    * @param relatedCodesetType The reference codeset that needs to be looked up
    * @return
    */
-  public Code getRelatedCode(Code code, CodesetType relatedCodesetType) {
+  public String getRelatedCodeValue(Code code, CodesetType relatedCodesetType) {
     if (code != null && code.getReference() != null) {
       List<LinkTo> links = code.getReference().getLinkTo();
       for (LinkTo link : links) {
@@ -390,11 +390,25 @@ public class CodeMap {
           String codesetType = link.getCodeset();
           CodesetType type = CodesetType.getByTypeCode(codesetType);
           if (type == relatedCodesetType) {
-            Code relatedCode = this.getCodeForCodeset(type, link.getValue());
-            return relatedCode;
+            return link.getValue();
           }
         }
       }
+    }
+    return null;
+  }
+
+  /**
+   * This returns the first related code found, if present
+   *
+   * @param code The code where the reference should be taken from
+   * @param relatedCodesetType The reference codeset that needs to be looked up
+   * @return
+   */
+  public Code getRelatedCode(Code code, CodesetType relatedCodesetType) {
+    String relatedValue = getRelatedCodeValue(code, relatedCodesetType);
+    if (StringUtils.isNotBlank(relatedValue)) {
+      return this.getCodeForCodeset(relatedCodesetType, relatedValue);
     }
     return null;
   }
